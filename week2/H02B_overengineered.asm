@@ -57,13 +57,13 @@ main		PROC						; Start
 			cmovl	EDX, ECX
 
 			mov		EAX, currentYear	; if (currentYear - 1 == year) { EDX = yearPassedMsg }
-			sub		EAX, 1
+			dec		EAX
 			cmp		EAX, year
 			lea		ECX, yearPassedMsg
 			cmove	EDX, ECX
 
 			mov		EAX, currentYear	; if (currentYear + 1 == year) { EDX = yearLeftMsg }
-			add		EAX, 1
+			inc		EAX
 			cmp		EAX, year
 			lea		ECX, yearLeftMsg
 			cmove	EDX, ECX
