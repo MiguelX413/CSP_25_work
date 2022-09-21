@@ -52,13 +52,13 @@ main		PROC						; Start
 			lea		EDX, yearsPassedMsg ; EDX = yearsPassedMsg
 
 			mov		EAX, currentYear	; if (currentYear - 1 == year) { EDX = yearPassedMsg }
-			dec		EAX
+			sub		EAX, 1
 			cmp		EAX, year
 			lea		ECX, yearPassedMsg
 			cmove	EDX, ECX
 
 			mov		EAX, currentYear	; if (currentYear + 1 < year) { EDX = yearsLeftMsg }
-			inc		EAX					; if (currentYear + 1 == year) { EDX = yearLeftMsg }
+			add		EAX, 1				; if (currentYear + 1 == year) { EDX = yearLeftMsg }
 			cmp		EAX, year
 			lea		ECX, yearsLeftMsg
 			cmovl	EDX, ECX
