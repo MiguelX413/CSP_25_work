@@ -30,8 +30,8 @@ main		PROC					; Start
 			call	ReadDec			; Input num2
 			mov		num2, EAX
 
-			mov		ECX, num1		; IF num1 < num2
-			cmp		ECX, num2
+			; mov	EAX, num2		; IF num1 < num2
+			cmp		num1, EAX
 			jnl		main1
 
 			lea		EDX, SmallMsg	; Print "Smaller = ", num1
@@ -42,7 +42,7 @@ main		PROC					; Start
 main1:								; ELSE
 			lea		EDX, SmallMsg	; Print "Smaller = ", num2
 			call	WriteString
-			mov		EAX, num2
+			; mov	EAX, num2
 			call	WriteDec
 main2:								; ENDIF
 			call	CRLF
