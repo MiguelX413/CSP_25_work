@@ -37,13 +37,9 @@ main		PROC						; Start
 			call	ReadInt				; Input year
 			mov		year, EAX
 
-			mov		EAX, currentYear	; yearsDiff = max(currentYear, year) - min(currentYear, year)
-			mov		ECX, year
-			mov		EDX, EAX
-			cmp		ECX, EAX
-			cmovl	EDX, ECX
-			cmovg	EAX, ECX
-			sub		EAX, EDX
+			mov		EAX, currentYear	; yearsDiff = absl_diff(currentyear, year)
+			mov		EBX, year
+			call	absl_diff
 			mov		yearsDiff, EAX
 
 			mov		EAX, yearsDiff		; Print yearsDiff
@@ -70,4 +66,20 @@ main		PROC						; Start
 			; call	CRLF				; I don't think this is necessary because the strings already have CR and LF
 			exit						; Stop
 main		ENDP
+
+;*******************
+; Absolute Difference
+; input: two numbers in EAX and EBX
+; Output: absolute difference returned in EAX
+;*******************
+
+absl_diff	PROC						; Enter
+			mov		ECX, EAX			; EAX = max(EAX, EBX) - min(EAX, EBX)
+			cmp		EBX, EAX
+			cmovl	ECX, EBX
+			cmovg	EAX, EBX
+			sub		EAX, ECX
+
+			ret							; Exit
+absl_diff	ENDP
 			END	main
