@@ -102,7 +102,7 @@ ElseD:								; D ELSE
 			cmp		EAX, curDay
 			jng		ElseE
 
-			sub		age, 1			; age = age - 1
+			sub		age, 1			; age -= 1
 
 			lea		EDX, youAre		; Print "you are ", age, " years old"
 			call	WriteString
@@ -137,6 +137,7 @@ ElseF:								; F ELSE
 			lea		EDX, happyBday
 			call	WriteString
 			call	CRLF
+
 EndF:								; F ENDIF
 EndE:								; E ENDIF
 EndD:								; D ENDIF
@@ -146,9 +147,11 @@ ElseB:								; B ELSE
 			lea		EDX, notYetBorn ; Print "you haven't been born yet"
 			call	WriteString
 			call	CRLF
+
 EndB:								; B ENDIF
 EndA:								; A ENDIF
 			call	CRLF
+
 			exit					; Stop
 main		ENDP
 			END	main

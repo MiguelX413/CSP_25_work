@@ -25,21 +25,23 @@ main		PROC					; Start
 			call	WriteChar
 			call	CRLF
 
-			cmp		char, '0'		; IF char >= '0' AND char <= '9'
-			jnae	main1
+			cmp		char, '0'		; A IF char >= '0' AND char <= '9'
+			jnae	ElseA
 			cmp		char, '9'
-			jnbe	main1
+			jnbe	ElseA
 
 			call	WriteChar		; Print char, " is a digit"
 			lea		EDX, isDigMsg
 			call	WriteString
-			jmp		main2
-main1:								; ELSE
+
+			jmp		EndA
+ElseA:								; A ELSE
 			call	WriteChar		; Print char, " is not a digit"
 			lea		EDX, isntDigMsg
 			call	WriteString
-main2:								; ENDIF
+EndA:								; A ENDIF
 			call	CRLF
+
 			exit					; Stop
 main		ENDP
 			END	main

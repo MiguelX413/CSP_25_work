@@ -31,35 +31,39 @@ main		PROC					; Start
 			call	ReadDec			; Input num3
 			mov		num3, EAX
 
-			mov		ECX, num1		; IF num1 > num2 AND num1 > num3
+			mov		ECX, num1		; A IF num1 > num2 AND num1 > num3
 			cmp		ECX, num2
-			jng		main1
+			jng		ElseA
 			cmp		ECX, num3
-			jng		main1
+			jng		ElseA
 
 			lea		EDX, LargeMsg	; Print "Larger = ", num1
 			call	WriteString
 			mov		EAX, num1
 			call	WriteDec
-			jmp		main4
-main1:								; ELSE
-			mov		EBX, num2		; IF num2 > num3
+
+			jmp		EndA
+ElseA:								; A ELSE
+			mov		EBX, num2		; B IF num2 > num3
 			cmp		EBX, num3
-			jng		main2
+			jng		ElseB
 
 			lea		EDX, LargeMsg	; Print "Larger = ", num2
 			call	WriteString
 			mov		EAX, num2
 			call	WriteDec
-			jmp		main3
-main2:								; ELSE
+
+			jmp		EndB
+ElseB:								; B ELSE
 			lea		EDX, LargeMsg	; Print "Larger = ", num3
 			call	WriteString
 			mov		EAX, num3
 			call	WriteDec
-main3:								; ENDIF
-main4:								; ENDIF
+
+EndB:								; B ENDIF
+EndA:								; A ENDIF
 			call	CRLF
+
 			exit					; Stop
 main		ENDP
 			END	main
