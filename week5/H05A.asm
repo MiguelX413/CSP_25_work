@@ -33,7 +33,8 @@ WhileA:		cmp		numCt, 5		; A WHILE numCt < 5
 			call	ReadHex			; Input hexNum
 			mov		hexNum, EAX
 
-			add		hexSum, EAX		; hexSum += hexNum
+			; mov	EAX, hexNum		; hexSum += hexNum
+			add		hexSum, EAX
 			inc		numCt			; numCt++
 
 			jmp		WhileA
