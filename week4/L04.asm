@@ -1,6 +1,6 @@
 TITLE Assignment L04						(L04.asm)
 
-; Miguel C. [Redacted]
+; Miguel [Redacted]
 ; 10/06/2022
 ; Assignment L04
 ; Description: This program takes in 2 Hex numbers from the user and outputs the sum. The numbers are 8-bit.
